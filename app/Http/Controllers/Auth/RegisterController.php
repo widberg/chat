@@ -51,9 +51,11 @@ class RegisterController extends Controller
             'username' => 'required|string|max:40|regex:/^[0-9a-zA-Z\-_]+$/|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'g-recaptcha-response' => 'bail|required|recaptcha',
         ],
         [
             'username.regex' => 'Usernames can only contain numbers, letters, and the characters "-" or "_".',
+            'g-recaptcha-response.required' => 'The captcha is required.',
         ]);
     }
 

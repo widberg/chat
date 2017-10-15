@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -214,6 +215,7 @@ return [
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
         'Redis' => Illuminate\Support\Facades\Redis::class,
         'Request' => Illuminate\Support\Facades\Request::class,
