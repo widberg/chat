@@ -48,9 +48,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:40|unique:users',
+            'username' => 'required|string|max:40|regex:/^[0-9a-zA-Z\-_]+$/|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+        ],
+        [
+            'username.regex' => 'Usernames can only contain numbers, letters, and the characters "-" or "_".',
         ]);
     }
 
