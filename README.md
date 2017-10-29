@@ -55,25 +55,33 @@ Generate an app key to secure your data.
 php artisan key:generate
 ```
 
+Generate a passport key to secure your api data.
+
+```
+php artisan passport:keys
+```
+
 Run the database migrations.
 
 ```
 php artisan migrate
 ```
 
+Run the database seeder if you want to fill the database with example data for testing.
+
+```
+php artisan db:seed
+```
+
 The website is now configured and ready to be served. This can be achieved using a web server, however you may need to grant the web server write permissions to the `storage` and the `bootstrap/cache` directories, or PHP's built in development server.
 
-To use PHP's built in development server run the artisan serve command.
+To use PHP's built in development server run the serve command.
 
 ```
-php artisan serve
+php -S localhost:8000 -t public/
 ```
 
-By default the HTTP-server will listen to port 8000. However if that port is already in use or you wish to serve multiple applications this way, you might want to specify what port to use. Just add the --port argument:
-
-```
-php artisan serve --port=8080
-```
+By default the HTTP-server will listen to port 8000. However if that port is already in use or you wish to serve multiple applications this way, you might want to specify what port to use. This can be done by changing the 8000 to the port number you want to use. 
 
 ## Deployment
 
@@ -89,6 +97,14 @@ php artisan route:cache
 ```
 
 The files must be cached again if any changes are made.
+
+The class files can be added to an optimised class loader for better performance.
+
+```
+php artisan optimize
+```
+
+This command must be run again if any changes are made to the class files in the optimized class loader.
 
 ## Built With
 
