@@ -33,7 +33,7 @@ trait RegistersRooms
         $room = $this->create($request->all());
 
         return $this->registered($request, $room)
-            ?: redirect($this->redirectPath());
+            ?: redirect($this->redirectPath() . $room->name . '/');
     }
 
     /**

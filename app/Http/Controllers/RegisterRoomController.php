@@ -27,7 +27,7 @@ class RegisterRoomController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/room/';
 
     /**
      * Create a new controller instance.
@@ -67,8 +67,7 @@ class RegisterRoomController extends Controller
      */
     protected function create(array $data)
     {
-        return Room::create([
-            'user_id' => Auth::id(),
+        return Auth::user()->rooms()->create([
             'name' => $data['name'],
             'description' => $data['description'],
             'visibility' => $data['visibility'],
