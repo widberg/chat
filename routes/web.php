@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/createroom', 'RegisterRoomController@showRegistrationForm')->name('registerroom');
+Route::post('/createroom', 'RegisterRoomController@register');
+
 Route::get('/home', 'HomeController@index')->name('home');

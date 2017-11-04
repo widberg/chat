@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     protected $fillable = [
-        'name','description',
+        'user_id','name','description','visibility',
     ];
 
     public function owner()

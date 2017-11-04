@@ -19,5 +19,6 @@ $factory->define(App\Room::class, function (Faker $faker) {
         'user_id' => App\User::all()->random()->id,
         'name' => $faker->unique()->word,
         'description' => $faker->text(256),
+        'visibility' => rand(0, 2),
     ];
 });

@@ -19,6 +19,7 @@ class CreateRoomsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name', 20)->unique();
             $table->string('description', 256);
+            $table->integer('visibility')->unsigned();
             $table->timestamps();
         });
     }
