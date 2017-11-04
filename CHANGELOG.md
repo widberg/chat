@@ -6,10 +6,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.0.1] - 2017-10-29
+## [0.3.0] - 2017-11-4
 ### Added
-* New Laravel project.
-* Relevant markdown files and license information.
+* Room page.
+* Visibility for rooms.
+* Not invited page.
+
+## [0.2.5] - 2017-11-4
+### Added
+* Room model and migration.
+* Room seeder and factory.
+* Room creation.
+
+## [0.2.0] - 2017-10-29
+### Added
 * Config file.
 * Laravel auth.
 * Recaptca check on register.
@@ -17,3 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 * Laravel readme.md.
+
+## [0.1.0] - 2017-10-14
+* New Laravel project.
+* Relevant markdown files and license information.
