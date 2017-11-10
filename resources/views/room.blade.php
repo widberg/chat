@@ -23,3 +23,7 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+@endsection

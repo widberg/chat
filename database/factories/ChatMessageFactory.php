@@ -13,13 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
-    static $password;
+$factory->define(App\ChatMessage::class, function (Faker $faker) {
 
     return [
-        'username' => $faker->unique()->word(40),
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'user_id' => App\User::all()->random()->id,
+        'recipient_id' => null,
+        'room_id' => App\Room::all()->random()->id,
+        'message' => $faker->text(256),
     ];
 });

@@ -1,0 +1,33 @@
+[group:laravel]
+programs=worker,server,socket
+
+[program:worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/chat/artisan queue:work redis --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=pi
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/var/www/chat/worker.log
+
+[program:server]
+process_name=%(program_name)s_%(process_num)02d
+command=sudo php -S 192.168.1.9:80 -t /var/www/chat/public/
+autostart=true
+autorestart=true
+user=pi
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/www/chat/server.log
+
+[program:socket]
+process_name=%(program_name)s_%(process_num)02d
+directory=/var/www/chat/
+command=/home/pi/n/bin/laravel-echo-server start
+autostart=true
+autorestart=true
+user=pi
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/www/chat/socket.log

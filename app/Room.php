@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     protected $fillable = [
-        'name','description','visibility',
+        'user_id','name','description','visibility',
     ];
 
     public function owner()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function chatMessages()
+    {
+        return $this->hasMany('App\ChatMessage');
     }
 }
