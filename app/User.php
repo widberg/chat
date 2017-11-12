@@ -5,6 +5,7 @@ namespace App;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Room;
 
 class User extends Authenticatable
 {
@@ -36,5 +37,20 @@ class User extends Authenticatable
     public function chatMessages()
     {
         return $this->hasMany('App\ChatMessage');
+    }
+
+    public function canJoinRoom(Room $room)
+    {
+        if ($room->visibility == 0 || $room->visibility == 1) {
+            return true;
+        }
+        elseif ($room->visibility == 2)
+        {
+            if($this->rooms->contains($room->id))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

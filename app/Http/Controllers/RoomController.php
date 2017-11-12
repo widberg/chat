@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatMessageWasReceived;
 use App\Room;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class RoomController extends Controller
 {
@@ -28,16 +29,40 @@ class RoomController extends Controller
         $room = Room::where('name', $name)->first();
         if($room != null) {
             $data = array('room' => $room);
-            if ($room->visibility == 0 || $room->visibility == 1) {
+            if ((!Auth::check() && $room->visibility == 0) || (Auth::check() && Auth::user()->canJoinRoom($room))) {
                 return view("room")->with($data);
-            } elseif ($room->visibility == 2) {
-                if(Auth::user()->rooms->contains($room->id)){
-                    return view("room")->with($data);
-                }else{
-                    return view("notInvited")->with($data);
-                }
             }
-        }else{
+            else
+            {
+                return response()->view("notInvited", $data, 403);
+            }
+        }
+        else
+        {
+            abort(404);
+        }
+    }
+
+    public function send($name)
+    {
+        $room = Room::where('name', $name)->first();
+        if($room != null) {
+            if (Auth::user()->canJoinRoom($room)) {
+                $message = Input::get('message');
+                Auth::user()->chatMessages()->create([
+                    'room_id' => $room->id,
+                    'message' => $message,
+                ]);
+                broadcast(new ChatMessageWasReceived(Auth::user(), $room, $message))->toOthers();
+                return response()->json(['result' => 'ok']);
+            }
+            else
+            {
+                return response()->json(['result' => 'access denied'], 403);
+            }
+        }
+        else
+        {
             abort(404);
         }
     }

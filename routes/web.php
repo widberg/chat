@@ -21,5 +21,6 @@ Route::get('/createroom', 'RegisterRoomController@showRegistrationForm')->name('
 Route::post('/createroom', 'RegisterRoomController@register');
 
 Route::get('/room/{name}/', 'RoomController@index')->name('room');
+Route::post('/room/{name}/send', 'RoomController@send')->name('sendMessage');
 
 Route::get('/home', 'HomeController@index')->name('home');

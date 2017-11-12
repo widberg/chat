@@ -76,7 +76,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    @yield('scripts')
+    @yield('scripts', new Illuminate\Support\HtmlString('<script src="' . asset('js/app.js') . '"></script>'))
 </body>
 </html>

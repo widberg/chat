@@ -15,7 +15,6 @@ class ChatMessageWasReceived
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     protected $user;
-    protected $recipient;
     protected $room;
     protected $message;
 
@@ -24,10 +23,9 @@ class ChatMessageWasReceived
      *
      * @return void
      */
-    public function __construct($user, $recipient, $room, $message)
+    public function __construct($user, $room, $message)
     {
         $this->user = $user;
-        $this->recipient = $recipient;
         $this->room = $room;
         $this->message = $message;
     }
@@ -39,6 +37,6 @@ class ChatMessageWasReceived
      */
     public function broadcastOn()
     {
-        return new PresenceChannel($this->room);
+        return new PresenceChannel('room.' . $this->room->id);
     }
 }

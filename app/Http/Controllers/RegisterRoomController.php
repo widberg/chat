@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Traits\RegistersRooms;
 
@@ -65,12 +66,12 @@ class RegisterRoomController extends Controller
      * @param  array  $data
      * @return \App\Room
      */
-    protected function create(array $data)
+    protected function create()
     {
         return Auth::user()->rooms()->create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'visibility' => $data['visibility'],
+            'name' => Input::get('name'),
+            'description' => Input::get('description'),
+            'visibility' => Input::get('visibility'),
         ]);
     }
 }

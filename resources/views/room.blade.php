@@ -15,7 +15,17 @@
 
                 <div class="panel-body">
                     @if(Auth::check())
-                        You are logged in!
+                        <form class="form-horizontal" method="POST" action="{{ route('sendMessage', $room->name) }}">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input id="message" type="text" class="form-control" name="message" required autofocus>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                     @endif
                 </div>
             </div>
@@ -25,5 +35,7 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
 @endsection
+

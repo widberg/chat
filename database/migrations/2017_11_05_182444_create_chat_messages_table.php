@@ -17,8 +17,6 @@ class CreateChatMessagesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('recipient_id')->nullable()->unsigned();
-            $table->foreign('recipient_id')->references('id')->on('users');
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->string('message', 256);
