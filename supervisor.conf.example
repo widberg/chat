@@ -13,7 +13,7 @@ stdout_logfile=/var/www/chat/worker.log
 
 [program:server]
 process_name=%(program_name)s_%(process_num)02d
-command=sudo php -S 192.168.1.9:80 -t /var/www/chat/public/
+command=sudo php -S 0.0.0.0:80 -t /var/www/chat/public/
 autostart=true
 autorestart=true
 user=pi

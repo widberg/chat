@@ -28,7 +28,7 @@ class RegisterRoomController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/room/';
+    protected $redirectRoute = 'room';
 
     /**
      * Create a new controller instance.

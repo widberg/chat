@@ -11,9 +11,7 @@
 |
 */
 
-use App\Room;
-
-Broadcast::channel('room.{roomId}', function ($user, Room $roomId) {
+Broadcast::channel('room.{roomId}', function ($user, $roomId) {
     if ($user->canJoinRoom($roomId)) {
         return ['id' => $user->id, 'username' => $user->username];
     }

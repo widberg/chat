@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $room->name)
+@section('title', $room->name . ' - ' . config('app.name', 'Laravel'))
 
 @section('content')
 <div class="container">

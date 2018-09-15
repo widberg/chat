@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $room->name)
+@section('title', $room->name . ' - ' . config('app.name', 'Laravel'))
 
 @section('styles')
     <link rel="stylesheet" href="https://use.fontawesome.com/7fb48413eb.css">
@@ -26,6 +26,8 @@
                                 </span>
                             </div>
                         </form>
+                    @else
+                        You must be logged in to post to rooms.
                     @endif
                 </div>
             </div>

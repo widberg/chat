@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/createroom', 'RegisterRoomController@showRegistrationForm')->name('registerroom');
 Route::post('/createroom', 'RegisterRoomController@register');
 
+Route::get('/room/{name}', function ($name) {
+    return redirect()->route('room', ['name' => $name]);
+});
 Route::get('/room/{name}/', 'RoomController@index')->name('room');
 Route::post('/room/{name}/send', 'RoomController@send')->name('sendMessage');
 
