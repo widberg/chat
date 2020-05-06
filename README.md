@@ -26,7 +26,7 @@ These instructions will get you a copy of the project up and running on your loc
 Start by cloning the repository.
 
 ```
-git clone https://gitlab.com/prowolf/chat.git
+git clone https://gitlab.com/widberg/chat.git
 ```
 
 Change directory into the repository directory.
@@ -121,13 +121,13 @@ All notable changes to this project will be documented in [CHANGELOG.md](CHANGEL
 
 ## Versioning
 
-We use [SemVer](http://semver.org/spec/v2.0.0.html) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/prowolf/chat/tags). 
+We use [SemVer](http://semver.org/spec/v2.0.0.html) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/widberg/chat/tags). 
 
 ## Authors
 
-* **ProWolf** - *Initial work* - [ProWolf](https://gitlab.com/ProWolf)
+* **widberg** - *Initial work* - [widberg](https://gitlab.com/widberg)
 
-See also the list of [contributors](https://gitlab.com/prowolf/chat/graphs/master) who participated in this project.
+See also the list of [contributors](https://gitlab.com/widberg/chat/graphs/master) who participated in this project.
 
 ## License
 
